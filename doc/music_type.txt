@@ -1,0 +1,2 @@
+I use PCM music file.
+With 44100 Hz, 16 bit, 1 channel, big-endian.

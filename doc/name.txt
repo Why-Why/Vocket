@@ -1,0 +1,6 @@
+This is the rule of variable name.
+
+For all type, I use upper letter ABC.
+For all function and class, I use upper and lower letter Abc.
+For all variable, I use lower letter abc.
+For all const varialbe, I use upper letter ABC.
