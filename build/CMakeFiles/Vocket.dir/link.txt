@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../lib/libVocket.a  CMakeFiles/Vocket.dir/src/Vocket.cpp.o CMakeFiles/Vocket.dir/src/Physical/AudioPCM.cpp.o CMakeFiles/Vocket.dir/src/Physical/PhyController.cpp.o CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o
+/usr/bin/ranlib ../lib/libVocket.a

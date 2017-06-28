@@ -20,7 +20,7 @@ class AudioPCM : public AudioIO {
 	private:
 		// The file which will be used to input or output.
 		// The file will be opened and closed each time of Send or Recv.
-		string filename;
+		std::string filename;
 
 	public:
 		AudioPCM(const char * filename);

@@ -16,7 +16,7 @@ class Modulator {
 	private:
 
 	public:
-		virtual int Encode(BIT * data,int len)=0;
+		virtual int Encode(BIT * data,int len,DATA * out)=0;
 };
 
 #endif

@@ -11,8 +11,8 @@ Which will come true:
 #ifndef PHYCONTROLLER_H
 #define PHYCONTROLLER_H
 
-#include "Common.h";
-#include "Physical/AudioIO.h";
+#include "Common.h"
+#include "Physical/AudioIO.h"
 
 class PhyController {
 	private:

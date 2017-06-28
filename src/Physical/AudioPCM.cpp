@@ -6,7 +6,12 @@
 #include <fstream>
 
 #include "Physical/AudioPCM.h"
-#include "Commom.h"
+#include "Common.h"
+
+using std::string;
+using std::ifstream;
+using std::ofstream;
+using std::ios;
 
 AudioPCM::AudioPCM(const char * name) {
 	SetFileName(name);
@@ -19,15 +24,15 @@ int AudioPCM::SetFileName(const char * name) {
 
 int AudioPCM::Send(DATA * data,int len) {
 	ofstream out(filename.c_str(),ios::out | ios::trunc | ios::binary);
-	if(out.is_open()==0) return FILE_ERROR;
+	if(out.is_open()==0) return ERROR_FILE;
 
 	// Big-endian.
 	for(int i=0;i<len;++i) {
 		BYTE ob[2]={};
-		ob[0]=BYTE(data[len] & 0xff);
-		ob[1]=BYTE((data[len]>>8) & 0xff);
+		ob[1]=BYTE(data[i] & 0xff);
+		ob[0]=BYTE((data[i]>>8) & 0xff);
 
-		out.write(ob,2);
+		out.write((char *)ob,2);
 	}
 
 	out.close();
@@ -37,19 +42,19 @@ int AudioPCM::Send(DATA * data,int len) {
 
 int AudioPCM::Recv(DATA * data,int maxlen) {
 	ifstream in(filename.c_str(),ios::in | ios::binary);
-	if(in.is_open()==0) return FILE_ERROR;
+	if(in.is_open()==0) return ERROR_FILE;
 
-	BYTE a,b;
+	DATA a,b;
 	int len=0;
 
 	for(int i=0;i<maxlen;++i) {
 		if(in.eof()) break;
-		a=in.get();
-		if(in.enf()) break;
 		b=in.get();
+		if(in.eof()) break;
+		a=in.get();
 
 		// Big-endian.
-		data[len++]=(a & 0xff) | (((int(b))<<8) & 0xff);
+		data[len++]=(a & 0xff) | ((int(b))<<8);
 	}
 
 	return len;
