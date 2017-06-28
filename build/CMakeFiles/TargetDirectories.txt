@@ -1,2 +1,0 @@
-/home/whywhy/Project/Vocket/build/CMakeFiles/Vocket.dir
-/home/whywhy/Project/Vocket/build/CMakeFiles/test.dir

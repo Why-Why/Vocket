@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++11    CMakeFiles/test.dir/src/Vocket.cpp.o CMakeFiles/test.dir/test/test.cpp.o  -o ../bin/test -rdynamic ../lib/libVocket.a 
