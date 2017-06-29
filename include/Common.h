@@ -36,7 +36,7 @@ const int NO=-0x3f3f3f3f;
 const int ERROR_FILE=-1;
 const int ERROR_PARAMETERS=-2;
 
-// For Modulator, default data.
+// For Modulator and Demodulator, default data.
 const int DEF_RATE=44100;
 const int DEF_RATE0=128;
 const int DEF_RATE1=64;
