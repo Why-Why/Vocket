@@ -38,9 +38,9 @@ const int ERROR_PARAMETERS=-2;
 
 // For Modulator and Demodulator, default data.
 const int DEF_RATE=44100;
-const int DEF_RATE0=128;
-const int DEF_RATE1=64;
-const int DEF_WINDOWLEN=128;
+const int DEF_RATE0=2;
+const int DEF_RATE1=4;
+const int DEF_WINDOWLEN=441;
 const int DEF_AMPLITUDE=(1<<15)-1;
 
 #endif

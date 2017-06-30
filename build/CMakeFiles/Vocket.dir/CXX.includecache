@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Common.h
+
+../include/Physical/Demodulator.h
+Common.h
+../include/Physical/Common.h
+
+../include/Physical/DemodulatorDSTFT.h
+Physical/Demodulator.h
+../include/Physical/Physical/Demodulator.h
+
+/home/whywhy/Project/Vocket/src/Physical/DemodulatorDSTFT.cpp
+Common.h
+/home/whywhy/Project/Vocket/src/Physical/Common.h
+Physical/DemodulatorDSTFT.h
+/home/whywhy/Project/Vocket/src/Physical/Physical/DemodulatorDSTFT.h
+
