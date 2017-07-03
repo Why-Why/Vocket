@@ -35,6 +35,8 @@ const int OK=0;
 const int NO=-0x3f3f3f3f;
 const int ERROR_FILE=-1;
 const int ERROR_PARAMETERS=-2;
+const int ERROR_NOSTART=-3;
+const int ERROR_NOEND=-4;
 
 // For Modulator and Demodulator, default data.
 const int DEF_RATE=44100;
@@ -42,5 +44,18 @@ const int DEF_RATE0=2;
 const int DEF_RATE1=4;
 const int DEF_WINDOWLEN=441;
 const int DEF_AMPLITUDE=(1<<15)-1;
+
+const int DEF_GOELEN=8;	// The len of Goertzel algorithm, through test get this val.
+const int DEF_AVELEN=128;
+
+const int DEF_SIG_THRES=1000000;	// The minimum val a signal should have.
+const int DEF_SIGMUL_THRES=5;	// A/B>DEF_SIGNUL_THRES will be treated as different.
+const double DEF_HOLD_THRES=0.75;
+
+const int DEF_STRFLAGLEN=8;
+const int DEF_ENDFLAGLEN=8;
+const int DEF_STRFLAG[]={0,1,0,1,0,1,0,0};
+const int DEF_ENDFLAG[]={0,1,0,1,0,1,1,1};
+const int DEF_FLAG[]={0,1,0,1,0,1,0,1};		// Escape character.
 
 #endif

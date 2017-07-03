@@ -20,6 +20,14 @@ Common.h
 AudioIO.h
 ../include/Physical/AudioIO.h
 
+../include/Physical/Demodulator.h
+Common.h
+../include/Physical/Common.h
+
+../include/Physical/DemodulatorDSTFT.h
+Physical/Demodulator.h
+../include/Physical/Physical/Demodulator.h
+
 ../include/Physical/Modulator.h
 Common.h
 ../include/Physical/Common.h
@@ -37,6 +45,8 @@ cmath
 -
 cstdlib
 -
+Physical/DemodulatorDSTFT.h
+/home/whywhy/Project/Vocket/test/Physical/DemodulatorDSTFT.h
 Physical/ModulatorFSK.h
 /home/whywhy/Project/Vocket/test/Physical/ModulatorFSK.h
 Physical/AudioPCM.h

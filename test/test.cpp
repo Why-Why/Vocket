@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdlib>
 
+#include "Physical/DemodulatorDSTFT.h"
 #include "Physical/ModulatorFSK.h"
 #include "Physical/AudioPCM.h"
 #include "Common.h"
@@ -76,9 +77,34 @@ void solve(int ans[],int len) {
 	for(int i=0;i+WLEN<=len;++i) cal(ans+i,WLEN);
 }
 
+DATA ans[1000000];
+BIT out[1000000];
+
+// 46064 50793 55648 60502
+
 int main() {
 	BIT num[100];
-	DATA ans[100000],tans[100000];
+
+	char name[100];
+	cin>>name;
+	AudioPCM rrr(name);
+	int len=rrr.Recv(ans,1000000);
+
+	cout<<len<<endl;
+	for(int i=0;i<20;++i) cout<<ans[i]<<' ';
+	cout<<endl;
+
+	DemodulatorDSTFT ddd(44100,2,4,882);
+	int dlen=ddd.Decode(ans,len,out);
+
+	cout<<dlen<<endl;
+	for(int i=0;i<dlen;++i) {
+		cout<<out[i]<<',';
+		if((i+1)%8==0) cout<<endl;
+	}
+	cout<<endl;
+
+/*
 	for(int i=0;i<100;++i) num[i]=rand()%2;
 
 	ModulatorFSK fsk;
@@ -86,7 +112,7 @@ int main() {
 
 	for(int i=0;i<100;++i) cerr<<num[i]<<' ';
 	cerr<<endl;
-
+*/
 /*
 	int ttans[100000];
 	for(int i=0;i<len;++i) ttans[i]=ans[i];
@@ -94,6 +120,7 @@ int main() {
 
 	return 0;
 */
+/*
 	AudioPCM ttt("zz.pcm");
 	ttt.Send(ans,len);
 
@@ -103,6 +130,7 @@ int main() {
 	for(int i=0;i<len;++i)
 		if(ans[i]!=tans[i]) cerr<<"NO\n";
 	cerr<<"OK\n";
+*/
 
 	return 0;
 }

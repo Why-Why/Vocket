@@ -4,6 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
+  "/home/whywhy/Project/Vocket/src/MyMath.cpp" "/home/whywhy/Project/Vocket/build/CMakeFiles/test.dir/src/MyMath.cpp.o"
   "/home/whywhy/Project/Vocket/src/Vocket.cpp" "/home/whywhy/Project/Vocket/build/CMakeFiles/test.dir/src/Vocket.cpp.o"
   "/home/whywhy/Project/Vocket/test/test.cpp" "/home/whywhy/Project/Vocket/build/CMakeFiles/test.dir/test/test.cpp.o"
   )

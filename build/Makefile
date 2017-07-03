@@ -124,6 +124,33 @@ test/fast:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
 .PHONY : test/fast
 
+src/MyMath.o: src/MyMath.cpp.o
+.PHONY : src/MyMath.o
+
+# target to build an object file
+src/MyMath.cpp.o:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/MyMath.cpp.o
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/MyMath.cpp.o
+.PHONY : src/MyMath.cpp.o
+
+src/MyMath.i: src/MyMath.cpp.i
+.PHONY : src/MyMath.i
+
+# target to preprocess a source file
+src/MyMath.cpp.i:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/MyMath.cpp.i
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/MyMath.cpp.i
+.PHONY : src/MyMath.cpp.i
+
+src/MyMath.s: src/MyMath.cpp.s
+.PHONY : src/MyMath.s
+
+# target to generate assembly for a file
+src/MyMath.cpp.s:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/MyMath.cpp.s
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/MyMath.cpp.s
+.PHONY : src/MyMath.cpp.s
+
 src/Physical/AudioPCM.o: src/Physical/AudioPCM.cpp.o
 .PHONY : src/Physical/AudioPCM.o
 
@@ -281,6 +308,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... src/MyMath.o"
+	@echo "... src/MyMath.i"
+	@echo "... src/MyMath.s"
 	@echo "... src/Physical/AudioPCM.o"
 	@echo "... src/Physical/AudioPCM.i"
 	@echo "... src/Physical/AudioPCM.s"

@@ -72,9 +72,32 @@ CMakeFiles/test.dir/src/Vocket.cpp.o.provides: CMakeFiles/test.dir/src/Vocket.cp
 
 CMakeFiles/test.dir/src/Vocket.cpp.o.provides.build: CMakeFiles/test.dir/src/Vocket.cpp.o
 
+CMakeFiles/test.dir/src/MyMath.cpp.o: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/src/MyMath.cpp.o: ../src/MyMath.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/whywhy/Project/Vocket/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/test.dir/src/MyMath.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test.dir/src/MyMath.cpp.o -c /home/whywhy/Project/Vocket/src/MyMath.cpp
+
+CMakeFiles/test.dir/src/MyMath.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/src/MyMath.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/whywhy/Project/Vocket/src/MyMath.cpp > CMakeFiles/test.dir/src/MyMath.cpp.i
+
+CMakeFiles/test.dir/src/MyMath.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/src/MyMath.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/whywhy/Project/Vocket/src/MyMath.cpp -o CMakeFiles/test.dir/src/MyMath.cpp.s
+
+CMakeFiles/test.dir/src/MyMath.cpp.o.requires:
+.PHONY : CMakeFiles/test.dir/src/MyMath.cpp.o.requires
+
+CMakeFiles/test.dir/src/MyMath.cpp.o.provides: CMakeFiles/test.dir/src/MyMath.cpp.o.requires
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/MyMath.cpp.o.provides.build
+.PHONY : CMakeFiles/test.dir/src/MyMath.cpp.o.provides
+
+CMakeFiles/test.dir/src/MyMath.cpp.o.provides.build: CMakeFiles/test.dir/src/MyMath.cpp.o
+
 CMakeFiles/test.dir/test/test.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/test/test.cpp.o: ../test/test.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/whywhy/Project/Vocket/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/whywhy/Project/Vocket/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/test.dir/test/test.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test.dir/test/test.cpp.o -c /home/whywhy/Project/Vocket/test/test.cpp
 
@@ -98,12 +121,14 @@ CMakeFiles/test.dir/test/test.cpp.o.provides.build: CMakeFiles/test.dir/test/tes
 # Object files for target test
 test_OBJECTS = \
 "CMakeFiles/test.dir/src/Vocket.cpp.o" \
+"CMakeFiles/test.dir/src/MyMath.cpp.o" \
 "CMakeFiles/test.dir/test/test.cpp.o"
 
 # External object files for target test
 test_EXTERNAL_OBJECTS =
 
 ../bin/test: CMakeFiles/test.dir/src/Vocket.cpp.o
+../bin/test: CMakeFiles/test.dir/src/MyMath.cpp.o
 ../bin/test: CMakeFiles/test.dir/test/test.cpp.o
 ../bin/test: CMakeFiles/test.dir/build.make
 ../bin/test: ../lib/libVocket.a
@@ -116,6 +141,7 @@ CMakeFiles/test.dir/build: ../bin/test
 .PHONY : CMakeFiles/test.dir/build
 
 CMakeFiles/test.dir/requires: CMakeFiles/test.dir/src/Vocket.cpp.o.requires
+CMakeFiles/test.dir/requires: CMakeFiles/test.dir/src/MyMath.cpp.o.requires
 CMakeFiles/test.dir/requires: CMakeFiles/test.dir/test/test.cpp.o.requires
 .PHONY : CMakeFiles/test.dir/requires
 

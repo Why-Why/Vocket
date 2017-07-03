@@ -8,6 +8,10 @@
 
 ../include/Common.h
 
+../include/MyMath.h
+Common.h
+../include/Common.h
+
 ../include/Physical/Demodulator.h
 Common.h
 ../include/Physical/Common.h
@@ -17,8 +21,12 @@ Physical/Demodulator.h
 ../include/Physical/Physical/Demodulator.h
 
 /home/whywhy/Project/Vocket/src/Physical/DemodulatorDSTFT.cpp
+algorithm
+-
 Common.h
 /home/whywhy/Project/Vocket/src/Physical/Common.h
+MyMath.h
+/home/whywhy/Project/Vocket/src/Physical/MyMath.h
 Physical/DemodulatorDSTFT.h
 /home/whywhy/Project/Vocket/src/Physical/Physical/DemodulatorDSTFT.h
 
