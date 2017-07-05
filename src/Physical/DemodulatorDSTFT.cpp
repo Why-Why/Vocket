@@ -110,21 +110,54 @@ int DemodulatorDSTFT::FindStr(int * sig,int len) {
 */
 }
 
-int DemodulatorDSTFT::Decode(int * sig,int len,BIT * out,int str) {
+int DemodulatorDSTFT::Data2Sig(DATA * in,int len,int * sig) {
+	double * spe0=new double [len];
+	double * spe1=new double [len];
+	int spe0len,spe1len;
+	spe0len=GetSpectral(in,len,spe0,Rate0);
+	spe1len=GetSpectral(in,len,spe1,Rate1);
+
+	double * ave0=new double [len];
+	double * ave1=new double [len];
+	int ave0len,ave1len;
+	ave0len=GetAverage(spe0,spe0len,ave0,WindowLen/8);
+	ave1len=GetAverage(spe1,spe1len,ave1,WindowLen/8);
+
+	int siglen=GetSig(ave0,ave0len,ave1,ave1len,sig);
+
+	delete [] spe0;
+	delete [] spe1;
+	delete [] ave0;
+	delete [] ave1;
+
+	return siglen;
+}
+
+int DemodulatorDSTFT::Decode(int * sig,int len,BIT * out,int str,int & nextstr) {
 	int ret=0;
 	int tmp,times,coulen,tcou;
 
 	double winlen[2]={(double)WindowLen,(double)WindowLen};
 	int rcou[2]={1,1};
 
-	while(str<len) {
+	int maxlen=len-4*WindowLen;
+
+	while(str<maxlen) {
 		tcou=WindowLen;
 		while(str<len && sig[str]==-1 && tcou) ++str,--tcou;
-		if(sig[str]==-1) break;
+		if(sig[str]==-1) {
+			nextstr=-1;
+			break;
+		}
 
+		nextstr=str;
 		coulen=0;
 		tmp=sig[str];
 		while(str<len && sig[str]==tmp) ++str,++coulen;
+
+		// Do not have a long 0 or 1 !!!!!!!
+		// Or there will be something wrong.
+		if(str>=maxlen) break;
 
 		times=round(coulen/(double)winlen[tmp]);
 		for(int i=0;i<times;++i) out[ret++]=tmp;
@@ -134,6 +167,9 @@ int DemodulatorDSTFT::Decode(int * sig,int len,BIT * out,int str) {
 		rcou[tmp]+=times;
 	}
 
+	return ret;
+
+/*
 	int tp=DEF_ENDFLAGLEN-1;
 	for(int i=ret-1;i>=0;--i) {
 		if(out[i]==DEF_ENDFLAG[tp]) --tp;
@@ -147,7 +183,7 @@ int DemodulatorDSTFT::Decode(int * sig,int len,BIT * out,int str) {
 
 	if(tp<0) return ret;
 	return ERROR_NOEND;
-
+*/
 /*
 	int ret=0;
 	for(int i=str;i<len;i+=WindowLen) {
@@ -156,43 +192,4 @@ int DemodulatorDSTFT::Decode(int * sig,int len,BIT * out,int str) {
 	}
 	return ret;
 */
-}
-
-int DemodulatorDSTFT::Decode(DATA * in,int len,BIT * out) {
-	double * spe0=new double [len];
-	double * spe1=new double [len];
-	int spe0len,spe1len;
-	spe0len=GetSpectral(in,len,spe0,Rate0);
-	spe1len=GetSpectral(in,len,spe1,Rate1);
-
-	double * ave0=new double [len];
-	double * ave1=new double [len];
-	int ave0len,ave1len;
-	ave0len=GetAverage(spe0,spe0len,ave0,WindowLen/8);
-	ave1len=GetAverage(spe1,spe1len,ave1,WindowLen/8);
-
-	int * sig=new int [len+1];
-	int siglen;
-	sig[0]=-1;
-	siglen=GetSig(ave0,ave0len,ave1,ave1len,sig+1)+1;
-
-/*
-	FILE *f=fopen("data.txt","w");
-	for(int i=0;i<ave0len;++i) fprintf(f,"%lf %lf %d\n",ave0[i],ave1[i],sig[i]*1000000000);
-	fclose(f);
-*/
-
-	// Get the start of signal.
-	int str=FindStr(sig,siglen);
-	if(str<0) return ERROR_NOSTART;
-
-	int ret=Decode(sig,siglen,out,str);
-
-	delete [] spe0;
-	delete [] spe1;
-	delete [] ave0;
-	delete [] ave1;
-	delete [] sig;
-
-	return ret;
 }

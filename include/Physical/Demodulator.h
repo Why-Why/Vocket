@@ -15,7 +15,9 @@ class Demodulator {
 	private:
 
 	public:
-		virtual int Decode(DATA * in,int len,BIT * out)=0;
+		virtual int Data2Sig(DATA * in,int len,int * sig)=0;
+		virtual int FindStr(int * sig,int len)=0;
+		virtual int Decode(int * sig,int len,BIT * out,int str,int & nextstr)=0;
 };
 
 #endif

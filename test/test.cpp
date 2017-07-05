@@ -93,7 +93,7 @@ int main() {
 	cout<<len<<endl;
 	for(int i=0;i<20;++i) cout<<ans[i]<<' ';
 	cout<<endl;
-
+/*
 	DemodulatorDSTFT ddd(44100,2,4,882);
 	int dlen=ddd.Decode(ans,len,out);
 
@@ -103,7 +103,7 @@ int main() {
 		if((i+1)%8==0) cout<<endl;
 	}
 	cout<<endl;
-
+*/
 /*
 	for(int i=0;i<100;++i) num[i]=rand()%2;
 

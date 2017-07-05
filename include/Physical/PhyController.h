@@ -13,12 +13,21 @@ Which will come true:
 
 #include "Common.h"
 #include "Physical/AudioIO.h"
+#include "Physical/Modulator.h"
+#include "Physical/Demodulator.h"
+#include "Physical/PhyPackage.h"
 
 class PhyController {
 	private:
 		const static MODULATOR_TYPE def_modula=MODULATOR_FSK;
-		const static DEMODULATOR_TYPE def_demodula=DEMODULA_FSK_DSTFT;
+		const static DEMODULATOR_TYPE def_demodula=DEMODULATOR_FSK_DSTFT;
 		const static AUDIO_TYPE def_audio=AUDIO_PCM;
+
+		AudioIO * input;
+		AudioIO * output;
+		Modulator * modulator;
+		Demodulator * demodulator;
+		PhyPackage * package;
 
 	public:
 
@@ -27,7 +36,13 @@ class PhyController {
 	public:
 		PhyController();
 		// Chose which modulator and demodulator and voice input and voice outpu.
-		PhyController(MODULATOR_TYPE modula,DEMODULATOR_TYPE dumo,AUDIO_TYPE input,AUDIO_TYPE output);
+		PhyController(MODULATOR_TYPE modula,DEMODULATOR_TYPE demo,AUDIO_TYPE input,AUDIO_TYPE output);
+		~PhyController();
+
+		AudioIO * GetInput();
+		AudioIO * GetOutput();
+		Modulator * GetModulator();
+		Demodulator * GetDemodulator();
 
 		// Send the data, whose length is len.
 		// return the length of data that is successful to be sended, -1 for error.

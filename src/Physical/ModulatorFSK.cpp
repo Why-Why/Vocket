@@ -85,3 +85,7 @@ int ModulatorFSK::Encode(BIT * data,int len,DATA * out) {
 
 	return ret;
 }
+
+int ModulatorFSK::GetEncodeLen(int len) {
+	return WindowLen*len;
+}

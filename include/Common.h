@@ -9,14 +9,12 @@ This is some common data for used.
 
 enum MODULATOR_TYPE {
 	MODULATOR_FSK=1,
-	MODULATOR_PSK=2,
-	MODULATOR_MSK=3,
-	MODULATOR_GMSK=4
+	MODULATOR_PSK=2
 };
 
 enum DEMODULATOR_TYPE {
-	DEMODULA_FSK_DSTFT=11,	// The DSTFT method for FSK the decoder.
-	DEMODULA_FSK_NONCOHERENT=12	// The noncoherent method for FSK to decode.
+	DEMODULATOR_FSK_DSTFT=11,	// The DSTFT method for FSK the decoder.
+	DEMODULATOR_FSK_NONCOHERENT=12	// The noncoherent method for FSK to decode.
 };
 
 enum AUDIO_TYPE {
@@ -38,6 +36,12 @@ const int ERROR_PARAMETERS=-2;
 const int ERROR_NOSTART=-3;
 const int ERROR_NOEND=-4;
 
+const int ERROR_NOINPUT=-5;
+const int ERROR_NOOUTPUT=-6;
+const int ERROR_NOMODULATOR=-7;
+const int ERROR_NODEMODULATOR=-8;
+const int ERROR_NOPACKAGE=-9;
+
 // For Modulator and Demodulator, default data.
 const int DEF_RATE=44100;
 const int DEF_RATE0=2;
@@ -57,5 +61,10 @@ const int DEF_ENDFLAGLEN=8;
 const int DEF_STRFLAG[]={0,1,0,1,0,1,0,0};
 const int DEF_ENDFLAG[]={0,1,0,1,0,1,1,1};
 const int DEF_FLAG[]={0,1,0,1,0,1,0,1};		// Escape character.
+const BYTE DEF_STRFLAG_BYTE=84;
+const BYTE DEF_ENDFLAG_BYTE=87;
+const BYTE DEF_FLAG_BYTE=85;
+
+const char DEF_FILENAME[]="Example.pcm";
 
 #endif

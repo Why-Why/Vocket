@@ -43,6 +43,8 @@ class ModulatorFSK : public Modulator {
 
 		// The length of out should >= len*WindowLen;
 		int Encode(BIT * data,int len,DATA * out);
+
+		int GetEncodeLen(int len);
 };
 
 #endif

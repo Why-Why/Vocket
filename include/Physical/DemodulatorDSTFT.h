@@ -19,17 +19,15 @@ class DemodulatorDSTFT : public Demodulator {
 		// Check wheter that is a start flag, (01010100).
 		int CheckStr(int * sig,int len,int pos);
 
-		// Find the position of start, -1 for not find.
-		int FindStr(int * sig,int len);
-
-		// Get the 01 final bits.
-		int Decode(int * sig,int len,BIT * out,int str);
-
 	public:
 		DemodulatorDSTFT();
 		DemodulatorDSTFT(int Rate,int Rate0,int Rate1,int WindowLen);
 
 		int Set(int Rate,int Rate0,int Rate1,int WindowLen);
 
-		int Decode(DATA * in,int len,BIT * out);
+		int Data2Sig(DATA * in,int len,int * sig);
+		// Find the position of start, -1 for not find.
+		int FindStr(int * sig,int len);
+		// Get the 01 final bits, nextstr is the position not be solved, and should be solved next times, and -1 for none.
+		int Decode(int * sig,int len,BIT * out,int str,int & nextstr);
 };

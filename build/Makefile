@@ -247,6 +247,30 @@ src/Physical/PhyController.cpp.s:
 	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/PhyController.cpp.s
 .PHONY : src/Physical/PhyController.cpp.s
 
+src/Physical/PhyPackage.o: src/Physical/PhyPackage.cpp.o
+.PHONY : src/Physical/PhyPackage.o
+
+# target to build an object file
+src/Physical/PhyPackage.cpp.o:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/PhyPackage.cpp.o
+.PHONY : src/Physical/PhyPackage.cpp.o
+
+src/Physical/PhyPackage.i: src/Physical/PhyPackage.cpp.i
+.PHONY : src/Physical/PhyPackage.i
+
+# target to preprocess a source file
+src/Physical/PhyPackage.cpp.i:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/PhyPackage.cpp.i
+.PHONY : src/Physical/PhyPackage.cpp.i
+
+src/Physical/PhyPackage.s: src/Physical/PhyPackage.cpp.s
+.PHONY : src/Physical/PhyPackage.s
+
+# target to generate assembly for a file
+src/Physical/PhyPackage.cpp.s:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/PhyPackage.cpp.s
+.PHONY : src/Physical/PhyPackage.cpp.s
+
 src/Vocket.o: src/Vocket.cpp.o
 .PHONY : src/Vocket.o
 
@@ -323,6 +347,9 @@ help:
 	@echo "... src/Physical/PhyController.o"
 	@echo "... src/Physical/PhyController.i"
 	@echo "... src/Physical/PhyController.s"
+	@echo "... src/Physical/PhyPackage.o"
+	@echo "... src/Physical/PhyPackage.i"
+	@echo "... src/Physical/PhyPackage.s"
 	@echo "... src/Vocket.o"
 	@echo "... src/Vocket.i"
 	@echo "... src/Vocket.s"
