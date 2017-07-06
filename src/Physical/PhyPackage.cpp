@@ -38,6 +38,11 @@ int PhyPackage::Package(BYTE * in,int len,BIT * out) {
 		ret+=8;
 	}
 
+	Byte2Bit(out+ret,DEF_ENDFLAG_BYTE);
+	ret+=8;
+	Byte2Bit(out+ret,0);
+	ret+=8;
+
 	return ret;
 }
 
@@ -46,9 +51,9 @@ int PhyPackage::UnPackage(BIT * in,int len,BYTE * out) {
 	BYTE tmp;
 	bool haveend=0,haveflag=0;
 
-	if(Bit2Byte(in)!=DEF_STRFLAG_BYTE) return ERROR_NOSTART;
+//	if(Bit2Byte(in)!=DEF_STRFLAG_BYTE) return ERROR_NOSTART;
 
-	for(int i=8;i+8<=len;i+=8) {
+	for(int i=0;i+8<=len;i+=8) {
 		tmp=Bit2Byte(in+i);
 		if(haveflag) {
 			out[ret++]=tmp;
@@ -65,8 +70,11 @@ int PhyPackage::UnPackage(BIT * in,int len,BYTE * out) {
 		}
 	}
 
+	return ret;
+/*
 	if(haveend) return ret;
 	else return ERROR_NOEND;
+*/
 }
 
 int PhyPackage::GetPackageLen(int len) {

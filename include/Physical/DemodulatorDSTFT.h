@@ -30,4 +30,9 @@ class DemodulatorDSTFT : public Demodulator {
 		int FindStr(int * sig,int len);
 		// Get the 01 final bits, nextstr is the position not be solved, and should be solved next times, and -1 for none.
 		int Decode(int * sig,int len,BIT * out,int str,int & nextstr);
+
+		int GetDataLen(int siglen);
+		int GetSigLen(int datalen);
+		int GetBitLen(int siglen);
+		int GetLastdataLen();
 };

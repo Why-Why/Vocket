@@ -17,13 +17,21 @@ AudioPCM::AudioPCM(const char * name) {
 	SetFileName(name);
 }
 
+AudioPCM::~AudioPCM() {
+	if(inopen) in.close();
+	if(outopen) out.close();
+}
+
 int AudioPCM::SetFileName(const char * name) {
 	filename=string(name);
+	outopen=inopen=0;
 	return OK;
 }
 
 int AudioPCM::Send(DATA * data,int len) {
-	ofstream out(filename.c_str(),ios::out | ios::trunc | ios::binary);
+	if(outopen==0) out.open(filename.c_str(),ios::out | ios::trunc | ios::binary);
+	outopen=1;
+
 	if(out.is_open()==0) return ERROR_FILE;
 
 	// Big-endian.
@@ -35,13 +43,12 @@ int AudioPCM::Send(DATA * data,int len) {
 		out.write((char *)ob,2);
 	}
 
-	out.close();
-
 	return len;
 }
 
 int AudioPCM::Recv(DATA * data,int maxlen) {
-	ifstream in(filename.c_str(),ios::in | ios::binary);
+	if(inopen==0) in.open(filename.c_str(),ios::in | ios::binary);
+	inopen=1;
 	if(in.is_open()==0) return ERROR_FILE;
 
 	DATA a,b;

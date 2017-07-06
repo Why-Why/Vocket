@@ -43,7 +43,7 @@ int ModulatorFSK::Set(int rate,int rate0,int rate1,int windowlen,int amplitude) 
 
 int ModulatorFSK::Check(int rate,int rate0,int rate1,int windowlen,int amplitude) {
 	if(!(windowlen>=max(rate0,rate1))) return NO;
-	if(!(min(rate0,rate1)>=4)) return NO;
+	if(!(min(rate0,rate1)>=2)) return NO;
 	return OK;
 }
 
@@ -68,7 +68,7 @@ int ModulatorFSK::Encode(BIT bit,DATA * out) {
 	double k=2*PI/rateneed;
 	double A=Amplitude;
 
-	for(int i=0;i<WindowLen;++i) out[i]=A*sin(k*i);
+	for(int i=0;i<WindowLen;++i) out[i]=A*cos(k*i);
 
 	return WindowLen;
 }

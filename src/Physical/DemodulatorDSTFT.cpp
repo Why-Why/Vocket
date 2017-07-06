@@ -63,7 +63,7 @@ int DemodulatorDSTFT::CheckStr(int * sig,int len,int pos) {
 		else break;
 
 		tmp=sig[pos];
-		tcou=WindowLen+WindowLen/2;
+		tcou=WindowLen+WindowLen/5;
 		while(pos<len && sig[pos]==tmp && tcou) ++pos,--tcou;
 
 		if(sigp>=DEF_STRFLAGLEN) break;
@@ -133,6 +133,7 @@ int DemodulatorDSTFT::Data2Sig(DATA * in,int len,int * sig) {
 	return siglen;
 }
 
+// Note: Bug: if the end is 000000 or 111111, this will be passed.
 int DemodulatorDSTFT::Decode(int * sig,int len,BIT * out,int str,int & nextstr) {
 	int ret=0;
 	int tmp,times,coulen,tcou;
@@ -163,7 +164,7 @@ int DemodulatorDSTFT::Decode(int * sig,int len,BIT * out,int str,int & nextstr) 
 		for(int i=0;i<times;++i) out[ret++]=tmp;
 
 		// Update winlen.
-		winlen[tmp]=(winlen[tmp]*rcou[tmp]+coulen)/(rcou[tmp]+times);
+		if(coulen/(double)times>=WindowLen) winlen[tmp]=(winlen[tmp]*rcou[tmp]+coulen)/(rcou[tmp]+times);
 		rcou[tmp]+=times;
 	}
 
@@ -192,4 +193,21 @@ int DemodulatorDSTFT::Decode(int * sig,int len,BIT * out,int str,int & nextstr) 
 	}
 	return ret;
 */
+}
+
+int DemodulatorDSTFT::GetLastdataLen() {
+	return WindowLen*(DEF_STRFLAGLEN+1);
+}
+
+int DemodulatorDSTFT::GetDataLen(int siglen) {
+//	return siglen+DEF_GOELEN;		// ???
+	return siglen;
+}
+
+int DemodulatorDSTFT::GetSigLen(int datalen) {
+	return datalen;
+}
+
+int DemodulatorDSTFT::GetBitLen(int siglen) {
+	return (siglen+WindowLen-1)/WindowLen;
 }

@@ -14,5 +14,7 @@ CMakeFiles/test.dir/test/test.cpp.o: ../include/Physical/Demodulator.h
 CMakeFiles/test.dir/test/test.cpp.o: ../include/Physical/DemodulatorDSTFT.h
 CMakeFiles/test.dir/test/test.cpp.o: ../include/Physical/Modulator.h
 CMakeFiles/test.dir/test/test.cpp.o: ../include/Physical/ModulatorFSK.h
+CMakeFiles/test.dir/test/test.cpp.o: ../include/Physical/PhyController.h
+CMakeFiles/test.dir/test/test.cpp.o: ../include/Physical/PhyPackage.h
 CMakeFiles/test.dir/test/test.cpp.o: ../test/test.cpp
 

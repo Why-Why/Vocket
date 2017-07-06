@@ -46,7 +46,7 @@ const int ERROR_NOPACKAGE=-9;
 const int DEF_RATE=44100;
 const int DEF_RATE0=2;
 const int DEF_RATE1=4;
-const int DEF_WINDOWLEN=441;
+const int DEF_WINDOWLEN=882;
 const int DEF_AMPLITUDE=(1<<15)-1;
 
 const int DEF_GOELEN=8;	// The len of Goertzel algorithm, through test get this val.
@@ -65,6 +65,8 @@ const BYTE DEF_STRFLAG_BYTE=84;
 const BYTE DEF_ENDFLAG_BYTE=87;
 const BYTE DEF_FLAG_BYTE=85;
 
-const char DEF_FILENAME[]="Example.pcm";
+const char DEF_INPUTFILENAME[]="input.pcm";
+const char DEF_OUTPUTFILENAME[]="output.pcm";
+const int DEF_RECVDATALEN=44100;	// The length AudioIO input will get once.
 
 #endif

@@ -15,4 +15,6 @@ CMakeFiles/test.dir/test/test.cpp.o
  ../include/Physical/DemodulatorDSTFT.h
  ../include/Physical/Modulator.h
  ../include/Physical/ModulatorFSK.h
+ ../include/Physical/PhyController.h
+ ../include/Physical/PhyPackage.h
  /home/whywhy/Project/Vocket/test/test.cpp

@@ -32,6 +32,8 @@ class PhyController {
 	public:
 
 	private:
+		void Set(MODULATOR_TYPE modula,DEMODULATOR_TYPE demo,AUDIO_TYPE input,AUDIO_TYPE output);		
+		int RecvSig(int * sig,int maxdatalen);
 
 	public:
 		PhyController();

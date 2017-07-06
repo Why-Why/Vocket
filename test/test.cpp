@@ -5,6 +5,7 @@
 #include "Physical/DemodulatorDSTFT.h"
 #include "Physical/ModulatorFSK.h"
 #include "Physical/AudioPCM.h"
+#include "Physical/PhyController.h"
 #include "Common.h"
 
 using namespace std;
@@ -83,16 +84,33 @@ BIT out[1000000];
 // 46064 50793 55648 60502
 
 int main() {
+/*
 	BIT num[100];
 
 	char name[100];
 	cin>>name;
+*/
+	unsigned char ttt[]={"qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm"};
+	unsigned char aaa[1000];
+
+	PhyController con;
+
+	int len=con.Recv(aaa,300);
+	cerr<<len<<endl;
+	for(int i=0;i<len;++i) {
+		cout<<aaa[i];
+		if(aaa[i]!=ttt[i]) cerr<<"NO\n";
+	}
+	cout<<endl;
+
+/*
 	AudioPCM rrr(name);
 	int len=rrr.Recv(ans,1000000);
 
 	cout<<len<<endl;
 	for(int i=0;i<20;++i) cout<<ans[i]<<' ';
 	cout<<endl;
+*/
 /*
 	DemodulatorDSTFT ddd(44100,2,4,882);
 	int dlen=ddd.Decode(ans,len,out);

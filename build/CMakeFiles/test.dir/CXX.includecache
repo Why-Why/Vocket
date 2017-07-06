@@ -15,6 +15,8 @@ Common.h
 ../include/Physical/AudioPCM.h
 string
 -
+fstream
+-
 Common.h
 ../include/Physical/Common.h
 AudioIO.h
@@ -38,6 +40,22 @@ Common.h
 Physical/Modulator.h
 ../include/Physical/Physical/Modulator.h
 
+../include/Physical/PhyController.h
+Common.h
+../include/Physical/Common.h
+Physical/AudioIO.h
+../include/Physical/Physical/AudioIO.h
+Physical/Modulator.h
+../include/Physical/Physical/Modulator.h
+Physical/Demodulator.h
+../include/Physical/Physical/Demodulator.h
+Physical/PhyPackage.h
+../include/Physical/Physical/PhyPackage.h
+
+../include/Physical/PhyPackage.h
+Common.h
+../include/Physical/Common.h
+
 /home/whywhy/Project/Vocket/test/test.cpp
 iostream
 -
@@ -51,6 +69,8 @@ Physical/ModulatorFSK.h
 /home/whywhy/Project/Vocket/test/Physical/ModulatorFSK.h
 Physical/AudioPCM.h
 /home/whywhy/Project/Vocket/test/Physical/AudioPCM.h
+Physical/PhyController.h
+/home/whywhy/Project/Vocket/test/Physical/PhyController.h
 Common.h
 /home/whywhy/Project/Vocket/test/Common.h
 
