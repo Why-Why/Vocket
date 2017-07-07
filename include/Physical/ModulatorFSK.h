@@ -45,6 +45,8 @@ class ModulatorFSK : public Modulator {
 		int Encode(BIT * data,int len,DATA * out);
 
 		int GetEncodeLen(int len);
+
+		int SetBitrate(int bitrate);
 };
 
 #endif

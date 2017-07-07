@@ -124,6 +124,54 @@ test/fast:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
 .PHONY : test/fast
 
+src/Link/LinkController.o: src/Link/LinkController.cpp.o
+.PHONY : src/Link/LinkController.o
+
+# target to build an object file
+src/Link/LinkController.cpp.o:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.o
+.PHONY : src/Link/LinkController.cpp.o
+
+src/Link/LinkController.i: src/Link/LinkController.cpp.i
+.PHONY : src/Link/LinkController.i
+
+# target to preprocess a source file
+src/Link/LinkController.cpp.i:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.i
+.PHONY : src/Link/LinkController.cpp.i
+
+src/Link/LinkController.s: src/Link/LinkController.cpp.s
+.PHONY : src/Link/LinkController.s
+
+# target to generate assembly for a file
+src/Link/LinkController.cpp.s:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.s
+.PHONY : src/Link/LinkController.cpp.s
+
+src/Link/LinkPackage.o: src/Link/LinkPackage.cpp.o
+.PHONY : src/Link/LinkPackage.o
+
+# target to build an object file
+src/Link/LinkPackage.cpp.o:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.o
+.PHONY : src/Link/LinkPackage.cpp.o
+
+src/Link/LinkPackage.i: src/Link/LinkPackage.cpp.i
+.PHONY : src/Link/LinkPackage.i
+
+# target to preprocess a source file
+src/Link/LinkPackage.cpp.i:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.i
+.PHONY : src/Link/LinkPackage.cpp.i
+
+src/Link/LinkPackage.s: src/Link/LinkPackage.cpp.s
+.PHONY : src/Link/LinkPackage.s
+
+# target to generate assembly for a file
+src/Link/LinkPackage.cpp.s:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.s
+.PHONY : src/Link/LinkPackage.cpp.s
+
 src/MyMath.o: src/MyMath.cpp.o
 .PHONY : src/MyMath.o
 
@@ -332,6 +380,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... src/Link/LinkController.o"
+	@echo "... src/Link/LinkController.i"
+	@echo "... src/Link/LinkController.s"
+	@echo "... src/Link/LinkPackage.o"
+	@echo "... src/Link/LinkPackage.i"
+	@echo "... src/Link/LinkPackage.s"
 	@echo "... src/MyMath.o"
 	@echo "... src/MyMath.i"
 	@echo "... src/MyMath.s"

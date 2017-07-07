@@ -249,3 +249,13 @@ int PhyController::Recv(BYTE * byte,int maxlen) {
 
 	return ret;
 }
+
+int PhyController::SetBitrate(int bitrate) {
+	if(demodulator==0) return ERROR_NODEMODULATOR;
+	if(modulator==0) return ERROR_NOMODULATOR;
+
+	demodulator->SetBitrate(bitrate);
+	modulator->SetBitrate(bitrate);
+
+	return OK;
+}

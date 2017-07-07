@@ -18,6 +18,8 @@ class Modulator {
 	public:
 		virtual int Encode(BIT * data,int len,DATA * out)=0;
 		virtual int GetEncodeLen(int len)=0;	// return the length after encode.
+
+		virtual int SetBitrate(int bitrate)=0;
 };
 
 #endif

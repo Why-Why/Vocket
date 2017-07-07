@@ -46,6 +46,8 @@ class PhyController {
 		Modulator * GetModulator();
 		Demodulator * GetDemodulator();
 
+		int SetBitrate(int bitrate);
+
 		// Send the data, whose length is len.
 		// return the length of data that is successful to be sended, -1 for error.
 		int Send(BYTE * data,int len);

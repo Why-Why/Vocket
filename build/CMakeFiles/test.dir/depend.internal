@@ -6,9 +6,19 @@ CMakeFiles/test.dir/src/MyMath.cpp.o
  ../include/MyMath.h
  /home/whywhy/Project/Vocket/src/MyMath.cpp
 CMakeFiles/test.dir/src/Vocket.cpp.o
+ ../include/Common.h
+ ../include/Link/LinkController.h
+ ../include/Link/LinkPackage.h
+ ../include/Physical/AudioIO.h
+ ../include/Physical/Demodulator.h
+ ../include/Physical/Modulator.h
+ ../include/Physical/PhyController.h
+ ../include/Physical/PhyPackage.h
+ ../include/Vocket.h
  /home/whywhy/Project/Vocket/src/Vocket.cpp
 CMakeFiles/test.dir/test/test.cpp.o
  ../include/Common.h
+ ../include/Link/LinkPackage.h
  ../include/Physical/AudioIO.h
  ../include/Physical/AudioPCM.h
  ../include/Physical/Demodulator.h

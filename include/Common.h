@@ -7,6 +7,12 @@ This is some common data for used.
 #ifndef COMMON_H
 #define COMMON_H
 
+// Use which method to communicate, voice or file.
+enum TYPE {
+	VF_VOICE=1,
+	VF_FILE=2
+};
+
 enum MODULATOR_TYPE {
 	MODULATOR_FSK=1,
 	MODULATOR_PSK=2
@@ -41,6 +47,7 @@ const int ERROR_NOOUTPUT=-6;
 const int ERROR_NOMODULATOR=-7;
 const int ERROR_NODEMODULATOR=-8;
 const int ERROR_NOPACKAGE=-9;
+const int ERROR_ERRORDATA=-10;
 
 // For Modulator and Demodulator, default data.
 const int DEF_RATE=44100;
@@ -68,5 +75,8 @@ const BYTE DEF_FLAG_BYTE=85;
 const char DEF_INPUTFILENAME[]="input.pcm";
 const char DEF_OUTPUTFILENAME[]="output.pcm";
 const int DEF_RECVDATALEN=44100;	// The length AudioIO input will get once.
+
+// For Link Layer.
+const int DEF_LINKPACKAGE=8;	// Only change there is not useful.
 
 #endif

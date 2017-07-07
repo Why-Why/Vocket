@@ -28,6 +28,11 @@ int DemodulatorDSTFT::Set(int rate,int rate0,int rate1,int windowlen) {
 	return OK;
 }
 
+int DemodulatorDSTFT::SetBitrate(int bitrate) {
+	WindowLen=(Rate+bitrate-1)/bitrate;
+	return OK;
+}
+
 ///////////////////////////////
 
 bool DemodulatorDSTFT::CheckHold(int * sig,int len,int pos,int & L,int & R) {

@@ -35,4 +35,6 @@ class DemodulatorDSTFT : public Demodulator {
 		int GetSigLen(int datalen);
 		int GetBitLen(int siglen);
 		int GetLastdataLen();
+
+		int SetBitrate(int bitrate);
 };

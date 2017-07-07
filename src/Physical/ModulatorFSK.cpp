@@ -41,6 +41,11 @@ int ModulatorFSK::Set(int rate,int rate0,int rate1,int windowlen,int amplitude) 
 	return OK;
 }
 
+int ModulatorFSK::SetBitrate(int bitrate) {
+	WindowLen=(Rate+bitrate-1)/bitrate;
+	return OK;
+}
+
 int ModulatorFSK::Check(int rate,int rate0,int rate1,int windowlen,int amplitude) {
 	if(!(windowlen>=max(rate0,rate1))) return NO;
 	if(!(min(rate0,rate1)>=2)) return NO;

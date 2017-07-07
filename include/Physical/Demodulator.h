@@ -23,6 +23,8 @@ class Demodulator {
 		virtual int GetSigLen(int datalen)=0;
 		virtual int GetBitLen(int siglen)=0;
 		virtual int GetLastdataLen()=0;		// Get the length of data that will be retained for the next time to decode. (used for PhyController Recv).
+
+		virtual int SetBitrate(int bitrate)=0;
 };
 
 #endif

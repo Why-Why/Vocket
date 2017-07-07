@@ -6,6 +6,7 @@
 #include "Physical/ModulatorFSK.h"
 #include "Physical/AudioPCM.h"
 #include "Physical/PhyController.h"
+#include "Link/LinkPackage.h"
 #include "Common.h"
 
 using namespace std;
@@ -85,11 +86,30 @@ BIT out[1000000];
 
 int main() {
 /*
+	BYTE bbb[]="sfasdgadsgdfadasgasgasgaxx";
+	LinkPackage ppp;
+	Packet rem[100];
+
+	int len=ppp.Package(bbb,26,rem);
+	cout<<len<<endl;
+	for(int i=0;i<len;++i) {
+		cout<<rem[i].len<<' '<<rem[i].isfinal<<' '<<rem[i].ecc<<endl;
+		for(int j=0;j<=rem[i].len;++j) cout<<(int)rem[i].byte[j]<<' ';
+	cout<<endl;
+	}
+
+	BYTE tttt[1000]={};
+	len=ppp.UnPackage(rem,len,tttt);
+	cout<<len<<endl;
+	cout<<tttt<<endl;
+*/
+/*
 	BIT num[100];
 
 	char name[100];
 	cin>>name;
 */
+/*
 	unsigned char ttt[]={"qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm"};
 	unsigned char aaa[1000];
 
@@ -102,7 +122,7 @@ int main() {
 		if(aaa[i]!=ttt[i]) cerr<<"NO\n";
 	}
 	cout<<endl;
-
+*/
 /*
 	AudioPCM rrr(name);
 	int len=rrr.Recv(ans,1000000);
