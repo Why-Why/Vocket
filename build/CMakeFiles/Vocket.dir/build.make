@@ -187,9 +187,32 @@ CMakeFiles/Vocket.dir/src/Physical/PhyController.cpp.o.provides: CMakeFiles/Vock
 
 CMakeFiles/Vocket.dir/src/Physical/PhyController.cpp.o.provides.build: CMakeFiles/Vocket.dir/src/Physical/PhyController.cpp.o
 
+CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o: CMakeFiles/Vocket.dir/flags.make
+CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o: ../src/Physical/AudioALSA.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/whywhy/Project/Vocket/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o -c /home/whywhy/Project/Vocket/src/Physical/AudioALSA.cpp
+
+CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/whywhy/Project/Vocket/src/Physical/AudioALSA.cpp > CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.i
+
+CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/whywhy/Project/Vocket/src/Physical/AudioALSA.cpp -o CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.s
+
+CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o.requires:
+.PHONY : CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o.requires
+
+CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o.provides: CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o.provides.build
+.PHONY : CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o.provides
+
+CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o.provides.build: CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o
+
 CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o: CMakeFiles/Vocket.dir/flags.make
 CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o: ../src/Physical/ModulatorFSK.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/whywhy/Project/Vocket/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/whywhy/Project/Vocket/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o -c /home/whywhy/Project/Vocket/src/Physical/ModulatorFSK.cpp
 
@@ -212,7 +235,7 @@ CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.o: CMakeFiles/Vocket.dir/flags.make
 CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.o: ../src/Link/LinkPackage.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/whywhy/Project/Vocket/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/whywhy/Project/Vocket/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.o -c /home/whywhy/Project/Vocket/src/Link/LinkPackage.cpp
 
@@ -235,7 +258,7 @@ CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.o.provides.build: CMakeFiles/Vock
 
 CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.o: CMakeFiles/Vocket.dir/flags.make
 CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.o: ../src/Link/LinkController.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/whywhy/Project/Vocket/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/whywhy/Project/Vocket/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.o -c /home/whywhy/Project/Vocket/src/Link/LinkController.cpp
 
@@ -264,6 +287,7 @@ Vocket_OBJECTS = \
 "CMakeFiles/Vocket.dir/src/Physical/DemodulatorDSTFT.cpp.o" \
 "CMakeFiles/Vocket.dir/src/Physical/PhyPackage.cpp.o" \
 "CMakeFiles/Vocket.dir/src/Physical/PhyController.cpp.o" \
+"CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o" \
 "CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o" \
 "CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.o" \
 "CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.o"
@@ -277,6 +301,7 @@ Vocket_EXTERNAL_OBJECTS =
 ../lib/libVocket.a: CMakeFiles/Vocket.dir/src/Physical/DemodulatorDSTFT.cpp.o
 ../lib/libVocket.a: CMakeFiles/Vocket.dir/src/Physical/PhyPackage.cpp.o
 ../lib/libVocket.a: CMakeFiles/Vocket.dir/src/Physical/PhyController.cpp.o
+../lib/libVocket.a: CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o
 ../lib/libVocket.a: CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o
 ../lib/libVocket.a: CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.o
 ../lib/libVocket.a: CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.o
@@ -296,6 +321,7 @@ CMakeFiles/Vocket.dir/requires: CMakeFiles/Vocket.dir/src/Physical/AudioPCM.cpp.
 CMakeFiles/Vocket.dir/requires: CMakeFiles/Vocket.dir/src/Physical/DemodulatorDSTFT.cpp.o.requires
 CMakeFiles/Vocket.dir/requires: CMakeFiles/Vocket.dir/src/Physical/PhyPackage.cpp.o.requires
 CMakeFiles/Vocket.dir/requires: CMakeFiles/Vocket.dir/src/Physical/PhyController.cpp.o.requires
+CMakeFiles/Vocket.dir/requires: CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o.requires
 CMakeFiles/Vocket.dir/requires: CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o.requires
 CMakeFiles/Vocket.dir/requires: CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.o.requires
 CMakeFiles/Vocket.dir/requires: CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.o.requires

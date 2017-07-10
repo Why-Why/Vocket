@@ -19,6 +19,11 @@ CMakeFiles/Vocket.dir/src/MyMath.cpp.o
  ../include/Common.h
  ../include/MyMath.h
  /home/whywhy/Project/Vocket/src/MyMath.cpp
+CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o
+ ../include/Common.h
+ ../include/Physical/AudioALSA.h
+ ../include/Physical/AudioIO.h
+ /home/whywhy/Project/Vocket/src/Physical/AudioALSA.cpp
 CMakeFiles/Vocket.dir/src/Physical/AudioPCM.cpp.o
  ../include/Common.h
  ../include/Physical/AudioIO.h
@@ -37,6 +42,7 @@ CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o
  /home/whywhy/Project/Vocket/src/Physical/ModulatorFSK.cpp
 CMakeFiles/Vocket.dir/src/Physical/PhyController.cpp.o
  ../include/Common.h
+ ../include/Physical/AudioALSA.h
  ../include/Physical/AudioIO.h
  ../include/Physical/AudioPCM.h
  ../include/Physical/Demodulator.h

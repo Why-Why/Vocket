@@ -7,6 +7,7 @@
 #include "Physical/ModulatorFSK.h"
 #include "Physical/DemodulatorDSTFT.h"
 #include "Physical/AudioPCM.h"
+#include "Physical/AudioALSA.h"
 #include "Physical/PhyPackage.h"
 
 PhyController::PhyController() {
@@ -47,7 +48,7 @@ void PhyController::Set(MODULATOR_TYPE modula,DEMODULATOR_TYPE demo,AUDIO_TYPE i
 			input=new AudioPCM(DEF_INPUTFILENAME);
 			break;
 		case AUDIO_ALSA:
-			input=0;
+			input=new AudioALSA();
 			break;
 		default:
 			input=0;
@@ -59,7 +60,7 @@ void PhyController::Set(MODULATOR_TYPE modula,DEMODULATOR_TYPE demo,AUDIO_TYPE i
 			output=new AudioPCM(DEF_OUTPUTFILENAME);
 			break;
 		case AUDIO_ALSA:
-			output=0;
+			output=new AudioALSA();
 			break;
 		default:
 			output=0;

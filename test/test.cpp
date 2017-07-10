@@ -1,13 +1,9 @@
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
+#include <cstring>
 
-#include "Physical/DemodulatorDSTFT.h"
-#include "Physical/ModulatorFSK.h"
-#include "Physical/AudioPCM.h"
-#include "Physical/PhyController.h"
-#include "Link/LinkPackage.h"
-#include "Common.h"
+#include "Vocket.h"
 
 using namespace std;
 
@@ -84,7 +80,48 @@ BIT out[1000000];
 
 // 46064 50793 55648 60502
 
+DATA data[1000000];
+
+char s[1000];
+
 int main() {
+	cout<<"Chose Tyte(0 is recv 1 is send): ";
+	int x;
+	cin>>x;
+
+	if(x==0) {
+		Vocket v(VF_VOICE);
+
+		while(1) {
+			int len=v.Recv(s,1000);
+			cout<<len<<endl;
+			for(int i=0;i<len;++i) cout<<s[i];
+			cout<<endl;
+		}
+	}
+	else if(x==1) {
+		Vocket v(VF_VOICE);
+
+		while(1) {
+			cin>>s;
+			cerr<<"BEGIN\n";
+			int len=v.Send(s,strlen(s));
+			cerr<<"OK "<<len<<endl;
+		}
+	}
+
+
+
+/*
+	AudioALSA aaa;
+	AudioPCM bbb("ttt.pcm");
+
+	for(int i=1;i<=5;++i) {
+		int len=aaa.Recv(data,44100);
+		cerr<<len<<endl;
+		bbb.Send(data,len);
+	}
+*/
 /*
 	BYTE bbb[]="sfasdgadsgdfadasgasgasgaxx";
 	LinkPackage ppp;

@@ -199,6 +199,30 @@ src/MyMath.cpp.s:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/MyMath.cpp.s
 .PHONY : src/MyMath.cpp.s
 
+src/Physical/AudioALSA.o: src/Physical/AudioALSA.cpp.o
+.PHONY : src/Physical/AudioALSA.o
+
+# target to build an object file
+src/Physical/AudioALSA.cpp.o:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o
+.PHONY : src/Physical/AudioALSA.cpp.o
+
+src/Physical/AudioALSA.i: src/Physical/AudioALSA.cpp.i
+.PHONY : src/Physical/AudioALSA.i
+
+# target to preprocess a source file
+src/Physical/AudioALSA.cpp.i:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.i
+.PHONY : src/Physical/AudioALSA.cpp.i
+
+src/Physical/AudioALSA.s: src/Physical/AudioALSA.cpp.s
+.PHONY : src/Physical/AudioALSA.s
+
+# target to generate assembly for a file
+src/Physical/AudioALSA.cpp.s:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.s
+.PHONY : src/Physical/AudioALSA.cpp.s
+
 src/Physical/AudioPCM.o: src/Physical/AudioPCM.cpp.o
 .PHONY : src/Physical/AudioPCM.o
 
@@ -389,6 +413,9 @@ help:
 	@echo "... src/MyMath.o"
 	@echo "... src/MyMath.i"
 	@echo "... src/MyMath.s"
+	@echo "... src/Physical/AudioALSA.o"
+	@echo "... src/Physical/AudioALSA.i"
+	@echo "... src/Physical/AudioALSA.s"
 	@echo "... src/Physical/AudioPCM.o"
 	@echo "... src/Physical/AudioPCM.i"
 	@echo "... src/Physical/AudioPCM.s"

@@ -54,8 +54,7 @@ int LinkController::Send(BYTE * in,int len) {
 
 int LinkController::Send(Packet & pack) {
 	int ret=phy->Send((BYTE *)(&pack),package->GetByteLen());
-
-	sleep(DEF_RECVDATALEN*1000/(double)DEF_RATE);		// !!!
+	sleep(DEF_RECVDATALEN/(double)DEF_RATE);		// !!!
 
 	return ret;
 }

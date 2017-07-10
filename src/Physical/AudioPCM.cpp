@@ -4,6 +4,7 @@
 
 #include <string>
 #include <fstream>
+#include <unistd.h>
 
 #include "Physical/AudioPCM.h"
 #include "Common.h"
@@ -42,6 +43,8 @@ int AudioPCM::Send(DATA * data,int len) {
 
 		out.write((char *)ob,2);
 	}
+
+	sleep(len/(double)DEF_RATE);		// !!!!
 
 	return len;
 }

@@ -5,6 +5,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Vocket.dir/src/Physical/DemodulatorDSTFT.cpp.o"
   "CMakeFiles/Vocket.dir/src/Physical/PhyPackage.cpp.o"
   "CMakeFiles/Vocket.dir/src/Physical/PhyController.cpp.o"
+  "CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o"
   "CMakeFiles/Vocket.dir/src/Physical/ModulatorFSK.cpp.o"
   "CMakeFiles/Vocket.dir/src/Link/LinkPackage.cpp.o"
   "CMakeFiles/Vocket.dir/src/Link/LinkController.cpp.o"

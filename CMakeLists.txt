@@ -4,6 +4,7 @@ project(Vocket)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 include_directories(${PROJECT_SOURCE_DIR}/include)
+link_libraries(asound)
 
 # add_subdirectory(src)
 # For src subdirectory
@@ -23,6 +24,7 @@ set_target_properties(Vocket PROPERTIES OUTPUT_NAME "Vocket")
 aux_source_directory(${PROJECT_SOURCE_DIR}/test FILES)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
+# how to do if I have multi test files ?
 add_executable(test ${FILES})
 link_directories(${PROJECT_SOURCE_DIR}/lib)
 target_link_libraries(test Vocket)

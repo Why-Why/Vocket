@@ -173,8 +173,8 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 //Value Computed by CMake
 Vocket_BINARY_DIR:STATIC=/home/whywhy/Project/Vocket/build
 
-//Dependencies for target
-Vocket_LIB_DEPENDS:STATIC=
+//Dependencies for the target
+Vocket_LIB_DEPENDS:STATIC=general;asound;
 
 //Value Computed by CMake
 Vocket_SOURCE_DIR:STATIC=/home/whywhy/Project/Vocket

@@ -26,7 +26,6 @@ enum DEMODULATOR_TYPE {
 enum AUDIO_TYPE {
 	AUDIO_PCM=1,	// through pcm file.
 	AUDIO_ALSA=2,	// through alsa library.
-	AUDIO_WAV=3	// through wav file (sndfile library).
 };
 
 typedef unsigned char BYTE;	// for data to be output.
