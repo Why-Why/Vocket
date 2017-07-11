@@ -32,6 +32,9 @@ typedef unsigned char BYTE;	// for data to be output.
 typedef short DATA;	// for the music data (16 bits PCM).
 typedef bool BIT;
 
+typedef int (* SEND_FUNC) (void *,int);
+typedef int (* RECV_FUNC) (void *,int);
+
 const double PI=3.14159265358979323846;
 
 const int OK=0;
@@ -59,7 +62,7 @@ const int DEF_GOELEN=8;	// The len of Goertzel algorithm, through test get this 
 const int DEF_AVELEN=128;
 
 const int DEF_SIG_THRES=1000000;	// The minimum val a signal should have.
-const int DEF_SIGMUL_THRES=3;	// A/B>DEF_SIGNUL_THRES will be treated as different.
+const int DEF_SIGMUL_THRES=2;	// A/B>DEF_SIGNUL_THRES will be treated as different.
 const double DEF_HOLD_THRES=0.75;
 
 const int DEF_STRFLAGLEN=8;

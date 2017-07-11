@@ -28,3 +28,13 @@ int Vocket::Recv(void * out,int maxlen) {
 	if(link==0) return NO;
 	return link->Recv((BYTE *)out,maxlen);
 }
+
+int Vocket::SendToFunc(void * in,int len,SEND_FUNC func) {
+	if(link==0) return NO;
+	return link->SendToFunc((BYTE *)in,len,func);
+}
+
+int Vocket::RecvFromFunc(void * out,int maxlen,RECV_FUNC func) {
+	if(link==0) return NO;
+	return link->RecvFromFunc((BYTE *)out,maxlen,func);
+}

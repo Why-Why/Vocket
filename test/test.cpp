@@ -85,12 +85,13 @@ DATA data[1000000];
 char s[1000];
 
 int main() {
+/*
 	cout<<"Chose Tyte(0 is recv 1 is send): ";
 	int x;
 	cin>>x;
 
 	if(x==0) {
-		Vocket v(VF_VOICE);
+		Vocket v(VF_FILE);
 
 		while(1) {
 			int len=v.Recv(s,1000);
@@ -101,7 +102,7 @@ int main() {
 		}
 	}
 	else if(x==1) {
-		Vocket v(VF_VOICE);
+		Vocket v(VF_FILE);
 
 		while(1) {
 			cin>>s;
@@ -110,8 +111,7 @@ int main() {
 			cerr<<"OK "<<len<<endl;
 		}
 	}
-
-
+*/
 
 /*
 	AudioALSA aaa;

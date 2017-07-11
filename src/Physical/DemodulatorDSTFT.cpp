@@ -173,10 +173,19 @@ int DemodulatorDSTFT::Data2Sig(DATA * in,int len,int * sig) {
 
 	int * tmpsig=new int [len];
 	int tmpsiglen=GetSig(ave0,ave0len,ave1,ave1len,tmpsig);
-
+/*
+static int cou=0;
+++cou;
+char name[100];
+sprintf(name,"Y%d",cou);
+FILE * f=fopen(name,"w");
+*/
 	// Get an average of signal, avoid some noise.
 	int siglen=GetAveSig(tmpsig,tmpsiglen,sig,WindowLen);
-
+/*
+for(int i=0;i<siglen;++i) fprintf(f,"%lf %lf %d\n",ave0[i],ave1[i],tmpsig[i]*1000000000);
+fclose(f);
+*/
 	delete [] spe0;
 	delete [] spe1;
 	delete [] ave0;

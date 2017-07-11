@@ -24,6 +24,10 @@ CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o: ../include/Physical/AudioALS
 CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o: ../include/Physical/AudioIO.h
 CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.o: ../src/Physical/AudioALSA.cpp
 
+CMakeFiles/Vocket.dir/src/Physical/AudioIO.cpp.o: ../include/Common.h
+CMakeFiles/Vocket.dir/src/Physical/AudioIO.cpp.o: ../include/Physical/AudioIO.h
+CMakeFiles/Vocket.dir/src/Physical/AudioIO.cpp.o: ../src/Physical/AudioIO.cpp
+
 CMakeFiles/Vocket.dir/src/Physical/AudioPCM.cpp.o: ../include/Common.h
 CMakeFiles/Vocket.dir/src/Physical/AudioPCM.cpp.o: ../include/Physical/AudioIO.h
 CMakeFiles/Vocket.dir/src/Physical/AudioPCM.cpp.o: ../include/Physical/AudioPCM.h

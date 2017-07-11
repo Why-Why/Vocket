@@ -34,6 +34,7 @@ class PhyController {
 	private:
 		void Set(MODULATOR_TYPE modula,DEMODULATOR_TYPE demo,AUDIO_TYPE input,AUDIO_TYPE output);		
 		int RecvSig(int * sig,int maxdatalen);
+		int RecvSigFromFunc(int * sig,int maxdatalen,RECV_FUNC func);
 
 	public:
 		PhyController();
@@ -55,6 +56,9 @@ class PhyController {
 		// Recv the data, save in the data, whill get at most maxlen length of data.
 		// return the actual length of data, -1 for error.
 		int Recv(BYTE * data,int maxlen);
+
+		int SendToFunc(BYTE * data,int len,SEND_FUNC func);
+		int RecvFromFunc(BYTE * data,int maxlen,RECV_FUNC func);
 };
 
 #endif

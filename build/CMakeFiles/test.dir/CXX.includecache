@@ -20,6 +20,10 @@ Physical/PhyController.h
 Common.h
 ../include/Link/Common.h
 
+../include/MyMath.h
+Common.h
+../include/Common.h
+
 ../include/Physical/AudioIO.h
 Common.h
 ../include/Physical/Common.h
@@ -53,6 +57,22 @@ Common.h
 ../include/Common.h
 Link/LinkController.h
 ../include/Link/LinkController.h
+
+/home/whywhy/Project/Vocket/src/MyMath.cpp
+cmath
+-
+algorithm
+-
+Common.h
+/home/whywhy/Project/Vocket/src/Common.h
+MyMath.h
+/home/whywhy/Project/Vocket/src/MyMath.h
+
+/home/whywhy/Project/Vocket/src/Vocket.cpp
+Common.h
+/home/whywhy/Project/Vocket/src/Common.h
+Vocket.h
+/home/whywhy/Project/Vocket/src/Vocket.h
 
 /home/whywhy/Project/Vocket/test/test.cpp
 iostream

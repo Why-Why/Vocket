@@ -261,3 +261,124 @@ int PhyController::SetBitrate(int bitrate) {
 
 	return OK;
 }
+
+int PhyController::SendToFunc(BYTE * byte,int bytelen,SEND_FUNC func) {
+	if(!package) return ERROR_NOPACKAGE;
+	if(!modulator) return ERROR_NOMODULATOR;
+	if(!output) return ERROR_NOOUTPUT;
+
+	int ret=OK;
+	BIT * bit=0;
+	DATA * data=0;
+	int tmp,bitlen,datalen;
+
+	bit=new BIT[package->GetPackageLen(bytelen)];
+	bitlen=package->Package(byte,bytelen,bit);
+	if(bitlen<0) {
+		ret=bitlen;
+		goto finish;
+	}
+
+	data=new DATA[modulator->GetEncodeLen(bitlen)];
+	datalen=modulator->Encode(bit,bitlen,data);
+
+	if(datalen<0) {
+		ret=datalen;
+		goto finish;
+	}
+
+	tmp=output->SendToFunc(data,datalen,func);
+	if(tmp<0) ret=tmp;
+
+finish:
+
+	if(bit) delete [] bit;
+	if(data) delete [] data;
+
+	return ret;
+}
+
+// maxdatalen is the max length AudioIO input will read one times.
+int PhyController::RecvSigFromFunc(int * sig,int maxdatalen,RECV_FUNC func) {
+	DATA * data=new DATA [maxdatalen];
+	int datalen=input->RecvFromFunc(data,maxdatalen,func);
+	if(datalen<=0) return 0;
+
+	int siglen=demodulator->Data2Sig(data,datalen,sig);
+
+	delete [] data;
+	return siglen;
+}
+
+int PhyController::RecvFromFunc(BYTE * byte,int maxlen,RECV_FUNC func) {
+	if(!package) return ERROR_NOPACKAGE;
+	if(!demodulator) return ERROR_NODEMODULATOR;
+	if(!input) return ERROR_NOINPUT;
+
+	int maxdatalen=DEF_RECVDATALEN;
+	int maxsiglen=demodulator->GetSigLen(maxdatalen);
+	int * sig=new int [maxsiglen*2];
+
+	const int maxbitlen=(maxlen+2)*8;
+	BIT * bit=new BIT [maxbitlen];			// !!!
+	int bitlen=0;
+
+	int siglen=RecvSigFromFunc(sig,maxdatalen*2,func);
+
+	while(1) {
+		int str=demodulator->FindStr(sig,siglen);
+
+		if(str<0) {
+			if(siglen>=maxsiglen) {
+				for(int i=siglen-maxsiglen;i<siglen;++i) sig[i-siglen+maxsiglen]=sig[i];
+				siglen=maxsiglen;
+			}
+
+			int tmp=RecvSigFromFunc(sig+siglen,maxdatalen,func);
+			if(tmp<=0) break;
+			siglen+=tmp;
+		}
+		else {
+			bitlen=0;
+
+			while(1) {
+				int nextstr;
+				BIT * tmpbit=new BIT [demodulator->GetBitLen(siglen)];
+				int tmplen=demodulator->Decode(sig,siglen,tmpbit,str,nextstr);
+
+				for(int i=0;i<tmplen;++i) {
+					bit[bitlen++]=tmpbit[i];
+					if(bitlen>=maxbitlen) break;
+				}
+
+				delete [] tmpbit;
+
+				if(nextstr<0 || bitlen>=maxbitlen) break;
+				if(nextstr==0) {
+					// NO !!!
+					break;
+				}
+
+				for(int i=nextstr;i<siglen;++i) sig[i-nextstr]=sig[i];
+				siglen=siglen-nextstr;
+
+				int tmp=RecvSigFromFunc(sig+siglen,demodulator->GetDataLen(2*maxsiglen-siglen),func);
+				if(tmp<=0) break;
+				siglen+=tmp;
+
+				str=0;
+			}
+			break;
+		}
+	}
+
+	delete [] sig;
+
+	///////////////
+	// Have got bits.
+
+	int ret=package->UnPackage(bit+8,bitlen-8,byte);
+	delete [] bit;
+
+	return ret;
+}

@@ -33,6 +33,10 @@ class Vocket {
 
 		int Send(void * in,int len);
 		int Recv(void * out,int maxlen);
+
+		// Send to an callback function.
+		int SendToFunc(void * in,int len,SEND_FUNC func);
+		int RecvFromFunc(void * out,int maxlen,RECV_FUNC func);
 };
 
 #endif

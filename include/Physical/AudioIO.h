@@ -18,6 +18,9 @@ class AudioIO {
 	public:
 		virtual int Send(DATA * data,int len)=0;
 		virtual int Recv(DATA * data,int maxlen)=0;
+
+		int SendToFunc(DATA * data,int len,SEND_FUNC func);
+		int RecvFromFunc(DATA * data,int maxlen,RECV_FUNC func);
 };
 
 #endif

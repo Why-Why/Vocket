@@ -223,6 +223,30 @@ src/Physical/AudioALSA.cpp.s:
 	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/AudioALSA.cpp.s
 .PHONY : src/Physical/AudioALSA.cpp.s
 
+src/Physical/AudioIO.o: src/Physical/AudioIO.cpp.o
+.PHONY : src/Physical/AudioIO.o
+
+# target to build an object file
+src/Physical/AudioIO.cpp.o:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/AudioIO.cpp.o
+.PHONY : src/Physical/AudioIO.cpp.o
+
+src/Physical/AudioIO.i: src/Physical/AudioIO.cpp.i
+.PHONY : src/Physical/AudioIO.i
+
+# target to preprocess a source file
+src/Physical/AudioIO.cpp.i:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/AudioIO.cpp.i
+.PHONY : src/Physical/AudioIO.cpp.i
+
+src/Physical/AudioIO.s: src/Physical/AudioIO.cpp.s
+.PHONY : src/Physical/AudioIO.s
+
+# target to generate assembly for a file
+src/Physical/AudioIO.cpp.s:
+	$(MAKE) -f CMakeFiles/Vocket.dir/build.make CMakeFiles/Vocket.dir/src/Physical/AudioIO.cpp.s
+.PHONY : src/Physical/AudioIO.cpp.s
+
 src/Physical/AudioPCM.o: src/Physical/AudioPCM.cpp.o
 .PHONY : src/Physical/AudioPCM.o
 
@@ -416,6 +440,9 @@ help:
 	@echo "... src/Physical/AudioALSA.o"
 	@echo "... src/Physical/AudioALSA.i"
 	@echo "... src/Physical/AudioALSA.s"
+	@echo "... src/Physical/AudioIO.o"
+	@echo "... src/Physical/AudioIO.i"
+	@echo "... src/Physical/AudioIO.s"
 	@echo "... src/Physical/AudioPCM.o"
 	@echo "... src/Physical/AudioPCM.i"
 	@echo "... src/Physical/AudioPCM.s"

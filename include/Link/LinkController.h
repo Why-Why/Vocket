@@ -16,11 +16,13 @@ class LinkController {
 	private:
 		PhyController * phy;
 		LinkPackage * package;
+		TYPE IOType;
 
 	public:
 
 	private:
 		int Send(Packet & pack);
+		int SendToFunc(Packet & pack,SEND_FUNC func);
 
 	public:
 		LinkController(TYPE type);
@@ -30,6 +32,9 @@ class LinkController {
 
 		int Send(BYTE * in,int len);
 		int Recv(BYTE * out,int maxlen);
+
+		int SendToFunc(BYTE * in,int len,SEND_FUNC func);
+		int RecvFromFunc(BYTE * out,int maxlen,RECV_FUNC func);
 };
 
 #endif
