@@ -10,6 +10,9 @@ class DemodulatorDSTFT : public Demodulator {
 	private:
 		int Rate,Rate0,Rate1,WindowLen;
 
+		double ActWinLen[2];		// The actual window len, because the windowlen recved from mic is longer, I don't konw why.
+		int SigCou[2];				// Remeber the number of 0 and 1, used for ActWinLen's update.
+
 	public:
 
 	private:
@@ -18,6 +21,9 @@ class DemodulatorDSTFT : public Demodulator {
 
 		// Check wheter that is a start flag, (01010100).
 		int CheckStr(int * sig,int len,int pos);
+
+		// Set the ActWinLen to unused (value is -1).
+		void Init();
 
 	public:
 		DemodulatorDSTFT();

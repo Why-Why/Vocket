@@ -97,6 +97,7 @@ int main() {
 			cout<<len<<endl;
 			for(int i=0;i<len;++i) cout<<s[i];
 			cout<<endl;
+			break;
 		}
 	}
 	else if(x==1) {

@@ -18,3 +18,6 @@ int GetAverage(double * data,int len,double * out,int AveLen=DEF_AVELEN);
 // Get the signal of a wave.
 // out[i]: -1 is no signal, 0 is 0 signal, 1 is 1 signal.
 int GetSig(double * data0,int len0,double * data1,int len1,int * out);
+
+// Get the average of signal.
+int GetAveSig(int * insig,int insiglen,int * outsig,int AveLen);

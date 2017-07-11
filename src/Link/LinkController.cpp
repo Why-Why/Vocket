@@ -67,7 +67,7 @@ int LinkController::Recv(BYTE * out,int maxlen) {
 	int ret=0;
 
 	while(1) {
-		int len=phy->Recv(recvtmp,10);
+		int len=phy->Recv(recvtmp,10);		// !!!
 
 		if(len!=10) {
 			// ERROR!!!

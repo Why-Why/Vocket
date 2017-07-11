@@ -69,3 +69,38 @@ int GetSig(double * data0,int len0,double * data1,int len1,int * out) {
 
 	return ret;
 }
+
+int GetAveSig(int * in,int inlen,int * out,int avelen) {
+	int llen=avelen/2;
+	int rlen=avelen-llen;
+	int cou0=0,cou1=0,couno=llen;
+
+	for(int i=0;i<rlen;++i)
+		if(in[i]==-1) ++couno;
+		else if(in[i]==0) ++cou0;
+		else if(in[i]==1) ++cou1;
+
+	for(int i=0;i<inlen;++i) {
+		if(couno>avelen*(3.0/5.0)) out[i]=-1;
+		else {
+			if(cou0>=cou1) out[i]=0;
+			else out[i]=1;
+		}
+
+		if(i-llen<0) --couno;
+		else {
+			if(in[i-llen]==-1) --couno;
+			else if(in[i-llen]==0) --cou0;
+			else if(in[i-llen]==1) --cou1;
+		}
+
+		if(i+rlen>=inlen) ++couno;
+		else {
+			if(in[i+rlen]==-1) ++couno;
+			else if(in[i+rlen]==0) ++cou0;
+			else if(in[i+rlen]==1) ++cou1;
+		}
+	}
+
+	return inlen;
+}

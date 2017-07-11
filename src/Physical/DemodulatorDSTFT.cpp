@@ -25,12 +25,25 @@ int DemodulatorDSTFT::Set(int rate,int rate0,int rate1,int windowlen) {
 	Rate0=rate0;
 	Rate1=rate1;
 	WindowLen=windowlen;
+
+	Init();
+
 	return OK;
 }
 
 int DemodulatorDSTFT::SetBitrate(int bitrate) {
 	WindowLen=(Rate+bitrate-1)/bitrate;
+
+	Init();
+
 	return OK;
+}
+
+void DemodulatorDSTFT::Init() {
+	ActWinLen[0]=-1;
+	ActWinLen[1]=-1;
+	SigCou[0]=0;
+	SigCou[1]=0;
 }
 
 ///////////////////////////////
@@ -61,18 +74,44 @@ int DemodulatorDSTFT::CheckStr(int * sig,int len,int pos) {
 	int tmp,tcou;
 
 	while(pos<len) {
+/*
 		tcou=WindowLen;
 		while(pos<len && sig[pos]==-1 && tcou) ++pos,--tcou;
-
+*/
+/*
 		if(pos<len && sig[pos]==DEF_STRFLAG[sigp]) ++sigp;
 		else break;
+*/
 
 		tmp=sig[pos];
-		tcou=WindowLen+WindowLen/5;
-		while(pos<len && sig[pos]==tmp && tcou) ++pos,--tcou;
+		tcou=0;
+		while(pos<len && sig[pos]==tmp) ++pos,++tcou;
+
+		if(tcou>=WindowLen) {
+			int times;
+
+			if(ActWinLen[tmp]<0) {
+				times=1;
+				ActWinLen[tmp]=tcou;
+				SigCou[tmp]=1;
+			}
+			else {
+				times=round(tcou/ActWinLen[tmp]);
+				if(tcou/(double)times>=WindowLen) ActWinLen[tmp]=(ActWinLen[tmp]*SigCou[tmp]+tcou)/(SigCou[tmp]+times);
+				SigCou[tmp]+=times;
+			}
+
+			for(int i=0;i<times && sigp<DEF_STRFLAGLEN;++i) {
+				if(DEF_STRFLAG[sigp]==tmp) ++sigp;
+				else goto finish;
+			}
+		}
+		else break;
 
 		if(sigp>=DEF_STRFLAGLEN) break;
 	}
+
+finish:
 
 	if(sigp>=DEF_STRFLAGLEN) return pos;
 	return -1;
@@ -87,12 +126,16 @@ int DemodulatorDSTFT::CheckStr(int * sig,int len,int pos) {
 int DemodulatorDSTFT::FindStr(int * sig,int len) {
 	int L,R;
 
+	Init();		// !!!
+
 	for(int i=0;i<len;++i) {
 		if(sig[i]==DEF_STRFLAG[0]) {
 			if(CheckHold(sig,len,i,L,R)) {
 				int tmp=CheckStr(sig,len,L);
-				if(tmp!=-1) return tmp;
+				if(tmp!=-1) return L;
+				else i+=WindowLen;			// Maybe error.
 			}
+			else i+=WindowLen;				// Maybe error.
 		}
 	}
 
@@ -125,10 +168,14 @@ int DemodulatorDSTFT::Data2Sig(DATA * in,int len,int * sig) {
 	double * ave0=new double [len];
 	double * ave1=new double [len];
 	int ave0len,ave1len;
-	ave0len=GetAverage(spe0,spe0len,ave0,WindowLen/8);
-	ave1len=GetAverage(spe1,spe1len,ave1,WindowLen/8);
+	ave0len=GetAverage(spe0,spe0len,ave0,WindowLen/6);
+	ave1len=GetAverage(spe1,spe1len,ave1,WindowLen/6);
 
-	int siglen=GetSig(ave0,ave0len,ave1,ave1len,sig);
+	int * tmpsig=new int [len];
+	int tmpsiglen=GetSig(ave0,ave0len,ave1,ave1len,tmpsig);
+
+	// Get an average of signal, avoid some noise.
+	int siglen=GetAveSig(tmpsig,tmpsiglen,sig,WindowLen);
 
 	delete [] spe0;
 	delete [] spe1;
@@ -143,19 +190,17 @@ int DemodulatorDSTFT::Decode(int * sig,int len,BIT * out,int str,int & nextstr) 
 	int ret=0;
 	int tmp,times,coulen,tcou;
 
-	double winlen[2]={(double)WindowLen,(double)WindowLen};
-	int rcou[2]={1,1};
-
 	int maxlen=len-4*WindowLen;
 
 	while(str<maxlen) {
+/*
 		tcou=WindowLen;
 		while(str<len && sig[str]==-1 && tcou) ++str,--tcou;
 		if(sig[str]==-1) {
 			nextstr=-1;
 			break;
 		}
-
+*/
 		nextstr=str;
 		coulen=0;
 		tmp=sig[str];
@@ -165,12 +210,17 @@ int DemodulatorDSTFT::Decode(int * sig,int len,BIT * out,int str,int & nextstr) 
 		// Or there will be something wrong.
 		if(str>=maxlen) break;
 
-		times=round(coulen/(double)winlen[tmp]);
+		// I dont konw why the final voice wave's WindowLen will be longer, even 2*original WindowLen.
+		if(ActWinLen[tmp]<0)
+			break;		// Error !!!
+		else
+			times=round(coulen/(double)ActWinLen[tmp]);
+
 		for(int i=0;i<times;++i) out[ret++]=tmp;
 
 		// Update winlen.
-		if(coulen/(double)times>=WindowLen) winlen[tmp]=(winlen[tmp]*rcou[tmp]+coulen)/(rcou[tmp]+times);
-		rcou[tmp]+=times;
+		if(coulen/(double)times>=WindowLen) ActWinLen[tmp]=(ActWinLen[tmp]*SigCou[tmp]+coulen)/(SigCou[tmp]+times);
+		SigCou[tmp]+=times;
 	}
 
 	return ret;

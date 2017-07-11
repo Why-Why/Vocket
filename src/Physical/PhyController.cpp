@@ -139,7 +139,6 @@ int PhyController::RecvSig(int * sig,int maxdatalen) {
 	int siglen=demodulator->Data2Sig(data,datalen,sig);
 
 	delete [] data;
-
 	return siglen;
 }
 
@@ -189,8 +188,8 @@ int PhyController::Recv(BYTE * byte,int maxlen) {
 	int maxsiglen=demodulator->GetSigLen(maxdatalen);
 	int * sig=new int [maxsiglen*2];
 
-	const int maxbitlen=maxlen*8;
-	BIT * bit=new BIT [maxbitlen];
+	const int maxbitlen=(maxlen+2)*8;
+	BIT * bit=new BIT [maxbitlen];			// !!!
 	int bitlen=0;
 
 	int siglen=RecvSig(sig,maxdatalen*2);
@@ -220,11 +219,13 @@ int PhyController::Recv(BYTE * byte,int maxlen) {
 					bit[bitlen++]=tmpbit[i];
 					if(bitlen>=maxbitlen) break;
 				}
+
 				delete [] tmpbit;
 
 				if(nextstr<0 || bitlen>=maxbitlen) break;
 				if(nextstr==0) {
 					// NO !!!
+					break;
 				}
 
 				for(int i=nextstr;i<siglen;++i) sig[i-nextstr]=sig[i];
@@ -245,7 +246,7 @@ int PhyController::Recv(BYTE * byte,int maxlen) {
 	///////////////
 	// Have got bits.
 
-	int ret=package->UnPackage(bit,bitlen,byte);
+	int ret=package->UnPackage(bit+8,bitlen-8,byte);
 	delete [] bit;
 
 	return ret;
