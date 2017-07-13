@@ -25,7 +25,7 @@ class Vocket {
 
 	// The public function.
 	public:
-		Vocket(TYPE type);
+		Vocket(TYPE type=VF_VOICE);
 		~Vocket();
 
 		// Set the bitrate, return 1 for ok, 0 for error.

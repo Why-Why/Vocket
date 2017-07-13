@@ -32,8 +32,8 @@ typedef unsigned char BYTE;	// for data to be output.
 typedef short DATA;	// for the music data (16 bits PCM).
 typedef bool BIT;
 
-typedef int (* SEND_FUNC) (void *,int);
-typedef int (* RECV_FUNC) (void *,int);
+typedef int (* SEND_FUNC) (DATA *,int);
+typedef int (* RECV_FUNC) (DATA *,int);
 
 const double PI=3.14159265358979323846;
 
@@ -55,7 +55,7 @@ const int ERROR_ERRORDATA=-10;
 const int DEF_RATE=44100;
 const int DEF_RATE0=2;
 const int DEF_RATE1=4;
-const int DEF_WINDOWLEN=882;
+const int DEF_WINDOWLEN=4410;
 const int DEF_AMPLITUDE=(1<<15)-1;
 
 const int DEF_GOELEN=8;	// The len of Goertzel algorithm, through test get this val.

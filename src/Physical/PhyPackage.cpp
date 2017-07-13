@@ -29,6 +29,7 @@ int PhyPackage::Package(BYTE * in,int len,BIT * out) {
 	Byte2Bit(out+ret,DEF_STRFLAG_BYTE);
 	ret+=8;
 
+	// This is not good, I should have a fixed len of data to be sended, instead of escape character。
 	for(int i=0;i<len;++i) {
 		if(in[i]==DEF_STRFLAG_BYTE || in[i]==DEF_ENDFLAG_BYTE || in[i]==DEF_FLAG_BYTE) {
 			Byte2Bit(out+ret,DEF_FLAG_BYTE);

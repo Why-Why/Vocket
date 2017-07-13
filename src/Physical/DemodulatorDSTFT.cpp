@@ -87,7 +87,7 @@ int DemodulatorDSTFT::CheckStr(int * sig,int len,int pos) {
 		tcou=0;
 		while(pos<len && sig[pos]==tmp) ++pos,++tcou;
 
-		if(tcou>=WindowLen) {
+		if(tcou>=WindowLen/2) {
 			int times;
 
 			if(ActWinLen[tmp]<0) {
@@ -132,6 +132,7 @@ int DemodulatorDSTFT::FindStr(int * sig,int len) {
 		if(sig[i]==DEF_STRFLAG[0]) {
 			if(CheckHold(sig,len,i,L,R)) {
 				int tmp=CheckStr(sig,len,L);
+
 				if(tmp!=-1) return L;
 				else i+=WindowLen;			// Maybe error.
 			}
@@ -173,19 +174,17 @@ int DemodulatorDSTFT::Data2Sig(DATA * in,int len,int * sig) {
 
 	int * tmpsig=new int [len];
 	int tmpsiglen=GetSig(ave0,ave0len,ave1,ave1len,tmpsig);
-/*
+
+	// Get an average of signal, avoid some noise.
+	int siglen=GetAveSig(tmpsig,tmpsiglen,sig,WindowLen);
+
 static int cou=0;
 ++cou;
 char name[100];
 sprintf(name,"Y%d",cou);
 FILE * f=fopen(name,"w");
-*/
-	// Get an average of signal, avoid some noise.
-	int siglen=GetAveSig(tmpsig,tmpsiglen,sig,WindowLen);
-/*
-for(int i=0;i<siglen;++i) fprintf(f,"%lf %lf %d\n",ave0[i],ave1[i],tmpsig[i]*1000000000);
+for(int i=0;i<siglen;++i) fprintf(f,"%lf %lf %d %d\n",ave0[i],ave1[i],tmpsig[i]*100000000,sig[i]*100000000);
 fclose(f);
-*/
 	delete [] spe0;
 	delete [] spe1;
 	delete [] ave0;
